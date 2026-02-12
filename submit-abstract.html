@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    Submit an Abstract – ESDR Satellite Event: Large-Scale Genetics to Cellular Mechanisms of Skin Disease
+  </title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body class="bg-gray-50 text-gray-900 font-[Inter] antialiased min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="bg-white/80 backdrop-blur border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-lg font-semibold text-teal-800">
+        ESDR Satellite Event
+      </a>
+      <div class="space-x-6 text-sm font-medium">
+        <a href="index.html" class="text-gray-700 hover:text-indigo-600">
+          Home
+        </a>
+        <a
+          href="submit-abstract.html"
+          class="bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700 transition"
+        >
+          Submit Abstract
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-purple-700 to-teal-700 text-white py-24 px-6 text-center">
+    <div class="max-w-3xl mx-auto">
+      <span class="inline-block mb-4 bg-white/20 px-4 py-1 rounded-full text-sm">
+          ESDR 2026 Satellite Event 
+      </span>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        Submit an Abstract
+      </h1>
+      <p class="text-lg text-white/90">
+        If you are an ECR, submit an abstract to share your work on genetics and mechanisms of skin disease.
+        Selected abstracts will be invited for oral presentation and your <strong>travel fees will be funded</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Submission & Form Section -->
+  <main class="py-16 px-6 space-y-10">
+
+  <!-- Submission Guidelines Box -->
+  <div class="max-w-xl mx-auto bg-indigo-50 border border-indigo-100 rounded-2xl shadow-sm p-8">
+    <h2 class="text-2xl font-semibold text-indigo-800 mb-4 text-center">
+      Submission Guidelines
+    </h2>
+    <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm leading-relaxed">
+      <li>Presenting author must be an Early Career Researcher (ECR) - Definition?.</li>
+      <li>Abstracts must be submitted in English.</li>
+      <li>Maximum word count: <strong>300? words</strong>.</li>
+      <li>Include authors, affiliations, and main content in the abstract box.</li>
+      <li>Use / Don't use headers</li>
+      <li>Submission deadline: <strong>Date, 2026</strong>.</li>
+      <li>Accepted abstracts will be notified by email.</li>
+    </ul>
+  </div>
+
+  <!-- Submit Abstract Box -->
+  <div class="max-w-xl mx-auto bg-white rounded-2xl shadow-sm p-8 md:p-10">
+    <!-- Form Heading -->
+    <div class="text-center mb-6">
+      <h2 class="text-3xl font-semibold text-gray-900 mb-3">
+        Submit Abstract
+      </h2>
+      <p class="text-gray-700 text-sm">
+        Fill out the form below with your abstract details.
+      </p>
+    </div>
+
+    <!-- Form Card -->
+    <div class="px-8 py-6 bg-white">
+      <form
+        onsubmit="event.preventDefault(); submitForm(this);"
+        class="space-y-6"
+      >
+        <div>
+          <label class="block text-sm font-medium mb-1">
+            Presenting Author Name
+          </label>
+          <input
+            name="entry.680191558"
+            required
+            class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">
+            Email
+          </label>
+          <input
+            type="email"
+            name="entry.521700582"
+            required
+            class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">
+            Abstract Title
+          </label>
+          <input
+            name="entry.789224007"
+            required
+            class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">
+            Abstract
+          </label>
+          <textarea
+            name="entry.1358164172"
+            required
+            rows="6"
+            class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-indigo-600 text-white py-3 rounded-2xl font-medium hover:bg-indigo-700 transition"
+        >
+          Submit Abstract
+        </button>
+
+        <div
+          id="success"
+          class="hidden mt-6 rounded-2xl border border-green-300 bg-green-50 px-6 py-4 text-center"
+        >
+          <p class="text-lg font-semibold text-green-700">
+            ✅ We received your abstract!
+          </p>
+          <p class="text-sm text-green-600 mt-1">
+            Our review committee will contact you by email.
+          </p>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-12 text-center text-sm">
+    <p class="mb-2">
+      ESDR Satellite Event
+    </p>
+    <p>
+      Funded by the LEO Foundation
+    </p>
+  </footer>
+
+  <script>
+    function submitForm(form) {
+      const data = new FormData(form);
+      fetch(
+        "https://docs.google.com/forms/d/e/1FAIpQLScYf9TfYmvNvPr24TPrrBpbynHGT4suM4JD3MGW2rgPyKTiwA/formResponse",
+        {
+          method: "POST",
+          body: data,
+          mode: "no-cors",
+        }
+      ).then(() => {
+        form.reset();
+        document.getElementById("success").classList.remove("hidden");
+      });
+    }
+  </script>
+
+</body>
+</html>
