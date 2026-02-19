@@ -15,24 +15,82 @@
 </head>
 <body class="bg-gray-50 text-gray-900 font-[Inter] antialiased">
   <!-- Navigation -->
-  <nav class="bg-white/80 backdrop-blur border-b border-gray-200 sticky top-0 z-50">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="index.html" class="text-lg font-semibold text-teal-800">
-      ESDR Satellite Event
-    </a>
-    <div class="space-x-6 text-sm font-medium">
-      <a href="#about" class="text-gray-700 hover:text-indigo-600">About</a>
-      <a href="#speakers" class="text-gray-700 hover:text-indigo-600">Groups</a>
-      <a href="#schedule" class="text-gray-700 hover:text-indigo-600">Schedule</a>
-      <a
-        href="submit-abstract.html"
-        class="bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700 transition"
-      >
-        Submit Abstract
+<nav class="bg-white/80 backdrop-blur border-b border-gray-200 sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 py-2">
+    <div class="flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="index.html" class="text-lg font-semibold text-teal-800">
+        ESDR Satellite Event
       </a>
+
+      <!-- Burger Menu Button (Mobile) -->
+      <button 
+        id="burgerBtn" 
+        class="sm:hidden p-2 text-gray-700 hover:text-indigo-600 focus:outline-none"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg id="burgerIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- Desktop Links -->
+      <div class="hidden sm:flex gap-6 text-sm font-medium items-center">
+        <a href="#about" class="text-gray-700 hover:text-indigo-600">About</a>
+        <a href="#speakers" class="text-gray-700 hover:text-indigo-600">Groups</a>
+        <a href="#schedule" class="text-gray-700 hover:text-indigo-600">Schedule</a>
+        <a href="submit-abstract.html" class="bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700 transition">
+          Submit Abstract
+        </a>
+      </div>
+
     </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden sm:hidden pt-4 pb-2">
+      <div class="flex flex-col gap-3 text-sm font-medium">
+        <a href="#about" class="text-gray-700 hover:text-indigo-600 py-2">About</a>
+        <a href="#speakers" class="text-gray-700 hover:text-indigo-600 py-2">Groups</a>
+        <a href="#schedule" class="text-gray-700 hover:text-indigo-600 py-2">Schedule</a>
+        <a href="submit-abstract.html" class="bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700 transition text-center">
+          Submit Abstract
+        </a>
+      </div>
+    </div>
+
   </div>
 </nav>
+
+<script>
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const burgerIcon = document.getElementById('burgerIcon');
+  const closeIcon = document.getElementById('closeIcon');
+
+  burgerBtn.addEventListener('click', () => {
+    const isExpanded = mobileMenu.classList.contains('hidden');
+    
+    mobileMenu.classList.toggle('hidden');
+    burgerIcon.classList.toggle('hidden');
+    closeIcon.classList.toggle('hidden');
+    burgerBtn.setAttribute('aria-expanded', isExpanded);
+  });
+
+  // Close menu when clicking on a link
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      burgerIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+      burgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
 
   <!-- Hero -->
 <section class="relative bg-gradient-to-br from-purple-700 to-teal-700 text-white py-32 px-6">
@@ -54,7 +112,7 @@
       </span>
 
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-        From Large-Scale Genetics to Cellular Mechanisms of Skin Disease
+        Large-Scale Genetics to Cellular Mechanisms of Skin Disease
       </h1>
 
       <p class="text-xl text-white/90 mb-10">
@@ -83,20 +141,23 @@
 </section>
 
 
-<section id="about" class="py-12 px-6 max-w-4xl mx-auto text-center">
+<section id="about" class="py-12 px-6 max-w-5xl mx-auto text-center">
   <h2 class="text-3xl font-semibold mb-6">
     About the Event
   </h2>
   <p class="text-lg text-gray-700 leading-relaxed">
-    This one-day event will explore xxxx. The programme features keynote
-    lectures, selected abstract talks by ECRs, and
-    opportunities for discussion and networking.
+    This one-day event will explore how the potential of genetic associations can be harnessed 
+    through the integration of deep molecular phenotyping (proteomics, single-cell and spatial 
+    expression and AI-enriched perturbation predictions). The programme features talks from each
+     of the major skin disease molecular data projects, a keynote lecture, selected lightning talks 
+     by early career researchers, and opportunities for discussion and networking.
   </p>
   
   <div class="py-8 px-6 space-y-10">
   <p class="text-lg text-gray-700 leading-relaxed">
-    If you are an ECR, please consider submitting an abstract. Successful applicants will have their travel costs covered.
-      </p>
+    If you are a pre-doctoral or post-doctoral researcher working in this area, please consider submitting an abstract. 
+    <strong>Presenters of selected abstracts will receive a travel award and receive free registration to ESDR. </strong>     
+  </p>
     </div>
 </section>
 
@@ -118,13 +179,20 @@
         <p class="text-sm text-gray-600">Speaker/Rep Names</p>
       </div>
       <div class="rounded-2xl shadow-sm p-6 text-center bg-gray-50">
-        <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gray-200"></div>
-        <h3 class="text-xl font-medium">Human Skin Atlas</h3>
+      <img 
+        src="HSA.jpg" 
+        alt="Skin Genetics Consortium" 
+        class="w-24 h-24 mx-auto mb-4 rounded-full object-cover"
+      />          <h3 class="text-xl font-medium">Human Skin Atlas</h3>
         <p class="text-sm text-gray-600">Speaker/Rep Name(s)</p>
       </div>
       <div class="rounded-2xl shadow-sm p-6 text-center bg-gray-50">
-        <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gray-200"></div>
-        <h3 class="text-xl font-medium">Human Cell Atlas</h3>
+      <img 
+        src="HCA.jpg" 
+        alt="Skin Genetics Consortium" 
+        class="w-24 h-24 mx-auto mb-4 rounded-full object-cover"
+      />  
+      <h3 class="text-xl font-medium">Human Cell Atlas</h3>
         <p class="text-sm text-gray-600">Speaker/Rep Name(s)</p>
       </div>
     </div>
@@ -133,79 +201,41 @@
 
 <!-- Schedule -->
 <section id="schedule" class="py-14 px-6 max-w-6xl mx-auto">
-  <h2 class="text-3xl font-semibold mb-12 text-center">
-    Schedule
+  <h2 class="text-3xl font-semibold mb-2 text-center">
+    Schedule (TBC)
+  </h2>
+
+  <h2 class="text-1xl font-medium mb-8 text-center">
+    9-3PM CEST at Heidelberg Congress Center
   </h2>
 
   <div class="space-y-5">
-    <!-- Welcome -->
+    <!-- Session1 -->
     <div class="flex flex-col md:flex-row gap-6 bg-white rounded-2xl shadow-sm p-6">
       <div class="md:w-40 text-indigo-700 font-semibold">
-        09:00 – 09:15
+        09:00 – 11:00
       </div>
       <div>
         <h3 class="text-lg font-medium">
-          Welcome & Opening Remarks
+          Talks from the major skin disease molecular data projects
         </h3>
         <p class="text-sm text-gray-600 mt-1">
-          Organising Committee
+          TBC
         </p>
       </div>
     </div>
 
-    <!-- Keynote -->
+    <!-- Session 2 -->
     <div class="flex flex-col md:flex-row gap-6 bg-white rounded-2xl shadow-sm p-6">
       <div class="md:w-40 text-indigo-700 font-semibold">
-        09:15 – 10:00
+        11:00 – 12:00
       </div>
       <div>
-        <h3 class="text-lg font-semibold text-indigo-800">
-          Keynote: xxxxxx
+        <h3 class="text-lg font-medium text-grey-800">
+          Lightning talks from travel awardees
         </h3>
-        <p class="text-sm text-indigo-700 mt-1">
-          Name
-        </p>
-      </div>
-    </div>
-
-    <!-- Coffee -->
-    <div class="flex flex-col md:flex-row gap-6 bg-white rounded-2xl shadow-sm p-6">
-      <div class="md:w-40 text-indigo-700 font-semibold">
-        10:00 – 10:30
-      </div>
-      <div>
-        <h3 class="text-lg font-medium text-gray-700">
-          Coffee Break
-        </h3>
-      </div>
-    </div>
-
-    <!-- Session -->
-    <div class="flex flex-col md:flex-row gap-6 bg-white rounded-2xl shadow-sm p-6">
-      <div class="md:w-40 text-indigo-700 font-semibold">
-        10:30 – 11:30
-      </div>
-      <div>
-        <h3 class="text-lg font-medium">
-          Talk Title
-        </h3>
-        <p class="text-sm text-gray-600 mt-1">
-          Name
-        </p>
-      </div>
-    </div>
-
-    <!-- Session -->
-    <div class="flex flex-col md:flex-row gap-6 bg-white rounded-2xl shadow-sm p-6">
-      <div class="md:w-40 text-indigo-700 font-semibold">
-        11:30 – 12:30
-      </div>
-      <div>
-        <h3 class="text-lg font-medium">
-          Talk Title
-        </h3>
-        <p class="text-sm text-gray-600 mt-1">
-          Name
+        <p class="text-sm text-grey-700 mt-1">
+          TBC
         </p>
       </div>
     </div>
@@ -213,103 +243,61 @@
     <!-- Lunch -->
     <div class="flex flex-col md:flex-row gap-6 bg-white rounded-2xl shadow-sm p-6">
       <div class="md:w-40 text-indigo-700 font-semibold">
-        12:30 – 13:30
+        12:00 – 13:00
       </div>
       <div>
-        <h3 class="text-lg font-medium text-gray-700">
+        <h3 class="text-lg font-medium text-indigo-700">
           Lunch & Networking
         </h3>
       </div>
     </div>
 
-    <!-- Afternoon -->
+    <!-- Keynote -->
     <div class="flex flex-col md:flex-row gap-6 bg-white rounded-2xl shadow-sm p-6">
       <div class="md:w-40 text-indigo-700 font-semibold">
-        13:30 – 14:30
+        13:00 – 14:00
       </div>
       <div>
         <h3 class="text-lg font-medium">
-          Talk Title
+          Keynote
         </h3>
         <p class="text-sm text-gray-600 mt-1">
-          Name
+          TBC
         </p>
       </div>
     </div>
 
-    <!-- Session X -->
+    <!-- Session 3 -->
     <div class="flex flex-col md:flex-row gap-6 bg-white rounded-2xl shadow-sm p-6">
       <div class="md:w-40 text-indigo-700 font-semibold">
-        14:30 – 15:00
+        14:00 – 15:00
       </div>
       <div>
         <h3 class="text-lg font-medium">
-          Talk Title
-        </h3>
-        <p class="text-sm text-gray-600 mt-1">
-          Name
-        </p>
-      </div>
-    </div>
-
-    <!-- Coffee -->
-    <div class="flex flex-col md:flex-row gap-6 bg-white rounded-2xl shadow-sm p-6">
-      <div class="md:w-40 text-indigo-700 font-semibold">
-        15:00 – 15:30
-      </div>
-      <div>
-        <h3 class="text-lg font-medium text-gray-700">
-          Coffee Break
-        </h3>
-      </div>
-    </div>
-
-    <!-- Discussion -->
-    <div class="flex flex-col md:flex-row gap-6 bg-indigo-50 border border-indigo-100 rounded-2xl p-6">
-      <div class="md:w-40 text-indigo-700 font-semibold">
-        15:30 – 16:30
-      </div>
-      <div>
-        <h3 class="text-lg font-semibold text-indigo-800">
           Discussion
         </h3>
-        <p class="text-sm text-indigo-700 mt-1">
-          Name
-        </p>
-      </div>
-    </div>
-
-    <!-- Close -->
-    <div class="flex flex-col md:flex-row gap-6 bg-white rounded-2xl shadow-sm p-6">
-      <div class="md:w-40 text-indigo-700 font-semibold">
-        16:30 – 16:45
-      </div>
-      <div>
-        <h3 class="text-lg font-medium">
-          Closing Remarks
-        </h3>
         <p class="text-sm text-gray-600 mt-1">
-          Organising Committee
+          Everyone
         </p>
       </div>
     </div>
   </div>
 </section>
 
-
 <!-- Registration -->
 <section id="registration" class="py-14 px-6 bg-gray-100 text-center">
   <h2 class="text-3xl font-semibold mb-4">
     Register your interest
   </h2>
-  <p class="text-lg text-gray-700 mb-10">
-    Registration is free. We will be in touch with further details about the event closer to ESDR.
+  <p class="text-lg max-w-4xl mx-auto text-center text-gray-700 mb-10">
+   All Annual ESDR meeting registrants are welcome to attend. 
+   Please register below or let us know if you are planning to attend, so we can keep you up to date on the Symposium plans.
   </p>
 
   <form
     id="registrationForm"
     class="max-w-xl mx-auto bg-white rounded-2xl shadow-sm p-8 space-y-6"
-    action="https://docs.google.com/forms/d/e/1FAIpQLSfSbZkmv8SHBmHnOkbGrsTuaKjYfryAf3ETWFe2l1FdQ85wDw/formResponse"
+    action="https://docs.google.com/forms/d/1NL8WC8oa-Wrez_2-xdwHK6WDHV4gnp4ZhphFl2P6--Q/formResponse"
     method="POST"
   >
     <div class="text-left">
@@ -362,7 +350,7 @@
       type="submit"
       class="w-full bg-indigo-600 text-white py-3 rounded-2xl font-medium hover:bg-indigo-700 transition disabled:opacity-50"
     >
-      <span id="btnText">Submit Registration</span>
+      <span id="btnText">Submit</span>
     </button>
   </form>
 
@@ -460,7 +448,7 @@ form.addEventListener('submit', function (event) {
     successMessage.classList.remove('hidden');
   });
 
-  // ⏱️ Delay UI update to ensure request is sent
+  // Delay UI update to ensure request is sent
   setTimeout(() => {
     form.classList.add('hidden');
     successMessage.classList.remove('hidden');
@@ -470,13 +458,22 @@ form.addEventListener('submit', function (event) {
 </script>
 
   <!-- Footer -->
- <footer class="bg-gray-900 text-gray-400 py-12 text-center text-sm">
+ <footer class="bg-gray-900 text-gray-400 py-8 text-center text-sm">
   <p class="mb-2">
     ESDR Satellite Event
   </p>
   <p>
     Funded by the LEO Foundation
   </p>
+  <br>
+<!-- LEO Foundation Logo -->
+  <div class="flex justify-center">
+    <img 
+      src="LEO_LOGO.png" 
+      alt="LEO Foundation Logo"
+      class="h-16 object-contain"
+    />
+  </div>
 </footer>
 
 </body>
