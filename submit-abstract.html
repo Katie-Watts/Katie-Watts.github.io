@@ -21,38 +21,105 @@
 
 <body class="bg-gray-50 text-gray-900 font-[Inter] antialiased min-h-screen">
 
-  <!-- Navigation -->
-  <nav class="bg-white/80 backdrop-blur border-b border-gray-200 sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+<!-- Navigation -->
+<nav class="bg-white/80 backdrop-blur border-b border-gray-200 sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 py-2">
+    <div class="flex items-center justify-between">
+      
+      <!-- Logo -->
       <a href="index.html" class="text-lg font-semibold text-teal-800">
         ESDR Satellite Event
       </a>
-      <div class="space-x-6 text-sm font-medium">
+
+      <!-- Burger Menu Button (Mobile) -->
+      <button 
+        id="burgerBtn" 
+        class="sm:hidden p-2 text-gray-700 hover:text-indigo-600 focus:outline-none"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg id="burgerIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- Desktop Links -->
+      <div class="hidden sm:flex gap-6 text-sm font-medium items-center">
         <a href="index.html" class="text-gray-700 hover:text-indigo-600">
           Home
         </a>
-        <a
-          href="submit-abstract.html"
-          class="bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700 transition"
-        >
+        <a href="submit-abstract.html" class="bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700 transition text-center">
+          Submit Abstract
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden sm:hidden pt-4 pb-2">
+      <div class="flex flex-col gap-3 text-sm font-medium">
+        <a href="index.html" class="text-gray-700 hover:text-indigo-600 py-2">
+          Home
+        </a>
+        <a href="submit-abstract.html" class="bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700 transition text-center">
           Submit Abstract
         </a>
       </div>
     </div>
-  </nav>
+
+  </div>
+</nav>
+
+<script>
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const burgerIcon = document.getElementById('burgerIcon');
+  const closeIcon = document.getElementById('closeIcon');
+
+  burgerBtn.addEventListener('click', () => {
+    const isExpanded = mobileMenu.classList.contains('hidden');
+    
+    mobileMenu.classList.toggle('hidden');
+    burgerIcon.classList.toggle('hidden');
+    closeIcon.classList.toggle('hidden');
+    burgerBtn.setAttribute('aria-expanded', isExpanded);
+  });
+
+  // Close menu when clicking on a link
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      burgerIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+      burgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
 
   <!-- Hero -->
   <section class="bg-gradient-to-br from-purple-700 to-teal-700 text-white py-24 px-6 text-center">
-    <div class="max-w-3xl mx-auto">
-      <span class="inline-block mb-4 bg-white/20 px-4 py-1 rounded-full text-sm">
+    <div class="max-w-5xl mx-auto">
+      <span class="inline-block mb-4 bg-white/20 px-4 py-1 rounded-full text-base font-semibold">
           ESDR 2026 Satellite Event 
       </span>
       <h1 class="text-4xl md:text-5xl font-bold mb-6">
         Submit an Abstract
       </h1>
       <p class="text-lg text-white/90">
-        If you are an ECR, submit an abstract to share your work on genetics and mechanisms of skin disease.
-        Selected abstracts will be invited for oral presentation and your <strong>travel fees will be funded</strong>.
+        We are offering slots to pre-doctoral and post-doctoral researchers
+        to give a 5 minute lightning talk at the symposium.<strong> Selected speakers will be offered a travel 
+        award</strong> for attendance at the meeting. 
+        <br>
+        <br>
+        The award will cover:<br> 
+        -	Free ESDR meeting registration + €xxxx for hotel and travel cost for those in Europe. <br> 
+        -	Free ESDR meeting registration + €xxxx for hotel and travel cost for those traveling from outside of Europe. <br> 
+<br>
+        To apply for an award please fill in the form below by <strong>DD/MM/YY</strong>. We will inform successful travel awardees by end of June, prior to ESDR early registration closure.<br> <br> (NB - this is separate from the ESDR main programme abstract submission and you are welcome to submit to both)
       </p>
     </div>
   </section>
@@ -66,11 +133,10 @@
       Submission Guidelines
     </h2>
     <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm leading-relaxed">
-      <li>Presenting author must be an Early Career Researcher (ECR) - Definition?.</li>
+      <li>Presenting author must be a pre-doctoral or post-doctoral researcher </li>
       <li>Abstracts must be submitted in English.</li>
-      <li>Maximum word count: <strong>300? words</strong>.</li>
-      <li>Include authors, affiliations, and main content in the abstract box.</li>
-      <li>Use / Don't use headers</li>
+      <li>Maximum word count for abstract: <strong>300? words</strong>.</li>
+      <li>Maximum word count for description of career stage: <strong>200? words</strong>.</li>
       <li>Submission deadline: <strong>Date, 2026</strong>.</li>
       <li>Accepted abstracts will be notified by email.</li>
     </ul>
@@ -106,6 +172,18 @@
         </div>
 
         <div>
+        <label class="block text-sm font-medium mb-1">
+         Presenting Author Affiliation
+        </label>
+         <input
+           name="entry.1474551609"
+            required
+            class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+           />
+        </div>
+
+
+        <div>
           <label class="block text-sm font-medium mb-1">
             Email
           </label>
@@ -118,6 +196,82 @@
         </div>
 
         <div>
+          <div class="flex items-center justify-between mb-1">
+        <label class="block text-sm font-medium">
+          Career Stage
+        </label>
+          <span id="ecrWordCount" class="text-sm text-gray-500">
+             0 words
+          </span>
+        </div>
+        <textarea
+         id="ecrText"
+         name="entry.419200559"
+         required
+         rows="3"
+        class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        placeholder="Please include when you completed / will complete your PhD and ~150 words about your career trajectory"
+        ></textarea>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">
+         Region
+        </label>
+      <select
+        name="entry.48303202"
+        required
+        class="w-full rounded-xl border border-gray-300 px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+  >
+      <option value="" disabled selected>
+        Please select your region
+      </option>
+      <option value="Europe">
+        Europe
+     </option>
+      <option value="Outside Europe">
+       Outside Europe
+      </option>
+    </select>
+</div>
+
+<div>
+  <label class="block text-sm font-medium mb-1">
+    Have you submitted this abstract to the main ESDR meeting?
+  </label>
+  <select
+    name="entry.87086478"
+    required
+    class="w-full rounded-xl border border-gray-300 px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+  >
+    <option value="" disabled selected>
+      Please select
+    </option>
+    <option value="Yes">
+      Yes
+    </option>
+    <option value="No">
+      No
+    </option>
+  </select>
+</div>
+
+<div>
+  <div class="flex items-center justify-between mb-1">
+    <label class="block text-sm font-medium">
+      Full Author List
+    </label>
+  </div>
+  <textarea
+    id="authorListText"
+    name="entry.831993546"
+    required
+    rows="2"
+    class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+  ></textarea>
+</div>
+
+      <div>
           <label class="block text-sm font-medium mb-1">
             Abstract Title
           </label>
@@ -129,10 +283,16 @@
         </div>
 
         <div>
-          <label class="block text-sm font-medium mb-1">
-            Abstract
-          </label>
+          <div class="flex items-center justify-between mb-1">
+            <label class="block text-sm font-medium">
+              Abstract
+            </label>
+            <span id="wordCount" class="text-sm text-gray-500">
+              0 words
+            </span>
+          </div>
           <textarea
+            id="abstractText"
             name="entry.1358164172"
             required
             rows="6"
@@ -140,52 +300,108 @@
           ></textarea>
         </div>
 
+        <div>
+  <label class="block text-sm font-medium mb-1">
+    Keywords
+  </label>
+
+  <input
+    type="text"
+    name="entry.384418168"
+    required
+    class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+  />
+  <p class="text-xs text-gray-500 mt-1">
+    Enter up to 5 keywords separated by commas.
+  </p>
+</div>
+
         <button
           type="submit"
           class="w-full bg-indigo-600 text-white py-3 rounded-2xl font-medium hover:bg-indigo-700 transition"
         >
           Submit Abstract
         </button>
-
-        <div
-          id="success"
-          class="hidden mt-6 rounded-2xl border border-green-300 bg-green-50 px-6 py-4 text-center"
-        >
-          <p class="text-lg font-semibold text-green-700">
-            ✅ We received your abstract!
-          </p>
-          <p class="text-sm text-green-600 mt-1">
-            Our review committee will contact you by email.
-          </p>
-        </div>
       </form>
+
+      <div
+        id="success"
+        class="hidden mt-6 rounded-2xl border border-green-300 bg-green-50 px-6 py-4 text-center"
+      >
+        <p class="text-lg font-semibold text-green-700">
+          ✅ We received your abstract!
+        </p>
+        <p class="text-sm text-green-600 mt-1">
+          A copy of your submission will emailed to you. We will be in touch by email regarding the outcome.
+        </p>
+      </div>
     </div>
 
   </div>
 </main>
-
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 py-12 text-center text-sm">
-    <p class="mb-2">
-      ESDR Satellite Event
-    </p>
-    <p>
-      Funded by the LEO Foundation
-    </p>
-  </footer>
+ <footer class="bg-gray-900 text-gray-400 py-8 text-center text-sm">
+  <p class="mb-2">
+    ESDR Satellite Event
+  </p>
+  <p>
+    Funded by the LEO Foundation
+  </p>
+  <br>
+<!-- LEO Foundation Logo -->
+  <div class="flex justify-center">
+    <img 
+      src="LEO_LOGO.png" 
+      alt="LEO Foundation Logo"
+      class="h-16 object-contain"
+    />
+  </div>
+</footer>
 
   <script>
+    // Word count functionality
+    const abstractTextarea = document.getElementById('abstractText');
+    const wordCountDisplay = document.getElementById('wordCount');
+
+    function updateWordCount() {
+      const text = abstractTextarea.value.trim();
+      const words = text.length > 0 ? text.split(/\s+/).length : 0;
+      wordCountDisplay.textContent = `${words} word${words !== 1 ? 's' : ''}`;
+    }
+
+    abstractTextarea.addEventListener('input', updateWordCount);
+
+
+    // ECR word count functionality
+    const ecrTextarea = document.getElementById('ecrText');
+    const ecrWordCountDisplay = document.getElementById('ecrWordCount');
+
+  function updateEcrWordCount() {
+    const text = ecrTextarea.value.trim();
+    const words = text.length > 0 ? text.split(/\s+/).length : 0;
+    ecrWordCountDisplay.textContent = `${words} word${words !== 1 ? 's' : ''}`;
+
+  if (words > 150) {
+    ecrWordCountDisplay.classList.add("text-red-600");
+  } else {
+    ecrWordCountDisplay.classList.remove("text-red-600");
+  }
+}
+
+ecrTextarea.addEventListener('input', updateEcrWordCount);
+
+    // Form submission
     function submitForm(form) {
       const data = new FormData(form);
       fetch(
-        "https://docs.google.com/forms/d/e/1FAIpQLScYf9TfYmvNvPr24TPrrBpbynHGT4suM4JD3MGW2rgPyKTiwA/formResponse",
+        "https://docs.google.com/forms/d/e/1FAIpQLSc6D_FhBu0dQ8-jcfjurXWLbprM3DMOUVDuXvW077Fx1y8elg/formResponse",
         {
           method: "POST",
           body: data,
           mode: "no-cors",
         }
       ).then(() => {
-        form.reset();
+        form.style.display = "none"; // Hide the form
         document.getElementById("success").classList.remove("hidden");
       });
     }
