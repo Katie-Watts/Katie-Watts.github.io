@@ -709,16 +709,23 @@
   const keywordsHint  = document.getElementById('keywordsHint');
 
   function validateKeywords() {
-    const kws = keywordsInput.value.split(',').map(k => k.trim()).filter(Boolean);
-    const over = kws.length > 5;
-    keywordsHint.textContent = over
-      ? `Too many keywords — please enter no more than 5 (you have ${kws.length}).`
-      : 'Enter up to 5 keywords separated by commas.';
-    keywordsHint.classList.toggle('error', over);
-    return kws.length > 0 && !over;
-  }
+  const kws = keywordsInput.value.split(',').map(k => k.trim()).filter(Boolean);
+  const empty = kws.length === 0;
+  const over = kws.length > 5;
 
+  keywordsHint.textContent = over
+    ? `Too many keywords — please enter no more than 5 (you have ${kws.length}).`
+    : empty
+    ? 'Please enter at least one keyword.'
+    : 'Enter up to 5 keywords separated by commas.';
+
+  keywordsHint.classList.toggle('error', over || empty);
+  keywordsInput.classList.toggle('invalid', empty);
+
+  return !empty && !over;
+}
   keywordsInput.addEventListener('input', validateKeywords);
+  keywordsInput.addEventListener('blur', validateKeywords);
 
   // ── Inline validation ────────────────────────────────────────
   function showError(id, show) {
