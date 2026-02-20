@@ -584,7 +584,7 @@
           <div class="field">
             <div class="label-row">
               <label for="ecrText">Career Stage Description</label>
-              <span class="word-count" id="ecrWordCount">0 / 150 words</span>
+              <span class="word-count" id="ecrWordCount">0 / 200 words</span>
             </div>
             <textarea
               id="ecrText"
@@ -702,7 +702,7 @@
   }
 
   bindWordCount('abstractText', 'wordCount', 300);
-  bindWordCount('ecrText', 'ecrWordCount', 150);
+  bindWordCount('ecrText', 'ecrWordCount', 200);
 
   // ── Keywords validation ──────────────────────────────────────
   const keywordsInput = document.getElementById('keywords');
@@ -763,9 +763,9 @@
       document.getElementById('err-abstractText').textContent = 'Abstract exceeds 300 words.';
       return;
     }
-    if (ecrWords > 150) {
+    if (ecrWords > 200) {
       showError('ecrText', true);
-      document.getElementById('err-ecrText').textContent = 'Career stage description exceeds 150 words.';
+      document.getElementById('err-ecrText').textContent = 'Career stage description exceeds 200 words.';
       return;
     }
 
