@@ -487,7 +487,7 @@
 <!-- ── Nav ──────────────────────────────────── -->
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">ESDR Satellite Event</a>
+    <a href="index.html" class="nav-logo">G2CM ESDR Satellite Event</a>
 
     <button class="burger" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false">
       <svg id="burgerIcon" width="22" height="22" fill="none" stroke="#4a4a8a" viewBox="0 0 24 24">
@@ -543,7 +543,7 @@
      by early career researchers, and opportunities for discussion and networking.
     </p>
     <div class="about-highlight">
-      If you are a pre-doctoral or post-doctoral researcher working in this area, please consider submitting an abstract (this is seperate from the ESDR main programme).
+      If you are a pre-doctoral or post-doctoral researcher working in this area, please consider submitting an abstract (this is separate from the ESDR main programme).
       <strong>Presenters of selected abstracts will receive a travel award and free registration to ESDR.</strong>
     </div>
   </div>
@@ -738,8 +738,21 @@
   document.getElementById('organization').addEventListener('blur',
     () => validateField('organization', v => v.length > 0));
 
+  window.addEventListener('online', () => {
+    btnText.textContent = 'Register';
+    submitBtn.style.background = '';
+    submitBtn.disabled = false;
+  });
+
   form.addEventListener('submit', function(e) {
     e.preventDefault();
+
+    if (!navigator.onLine) {
+      btnText.textContent = 'No internet connection — please check and try again.';
+      submitBtn.style.background = 'var(--red)';
+      return;
+    }
+
     if (!validate()) return;
 
     submitBtn.disabled = true;
@@ -751,12 +764,18 @@
       { method: 'POST', mode: 'no-cors', body: new FormData(form) }
     );
 
-    Promise.all([fetchPromise, new Promise(r => setTimeout(r, 1000))]).finally(() => {
-      form.style.display = 'none';
-      success.classList.add('show');
-    });
+    Promise.all([fetchPromise, new Promise(r => setTimeout(r, 1000))])
+      .then(() => {
+        form.style.display = 'none';
+        success.classList.add('show');
+      })
+      .catch(() => {
+        btnText.textContent = 'Submission failed — please try again.';
+        submitBtn.style.background = 'var(--red)';
+        submitBtn.disabled = false;
+        spinner.classList.remove('show');
+      });
   });
 </script>
-
 </body>
 </html>
