@@ -211,8 +211,35 @@
       border-top: 1px solid rgba(255,255,255,0.1);
       padding-top: 20px;
       max-width: 780px;
-      margin: 0 auto;
+      margin: 24px auto 0;
       font-style: italic;
+    }
+
+    /* LEO Foundation banner */
+    .leo-banner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      max-width: 780px;
+      margin: 24px auto 0;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 18px 24px;
+      text-align: center;
+    }
+    .leo-banner-text {
+      font-size: 0.95rem;
+      font-style: normal;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.01em;
+    }
+    .leo-banner img {
+      height: 52px;
+      filter: brightness(1.5);
     }
 
     /* ── Main ────────────────────────────── */
@@ -454,7 +481,7 @@
       font-size: 0.82rem;
     }
     footer p { margin-bottom: 4px; }
-    footer img { height: 60px; margin-top: 20px; opacity: 0.85; filter: brightness(1.4); }
+    footer img { height: 70px; margin-top: 20px; opacity: 0.85; filter: brightness(1.4); }
   </style>
 </head>
 
@@ -476,12 +503,12 @@
 
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="submit-abstract.html" class="nav-cta">Submit Abstract</a>
+      <a href="submit-abstract.html" class="nav-cta">Apply for a travel award</a>
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Home</a>
-    <a href="submit-abstract.html" class="nav-cta">Submit Abstract</a>
+    <a href="submit-abstract.html" class="nav-cta">Apply for a travel award</a>
   </div>
 </nav>
 
@@ -489,9 +516,9 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-badge">ESDR 2026 Satellite Event</div>
-    <h1>Submit an Abstract</h1>
+    <h1>Submit an abstract to apply for a travel award</h1>
     <p class="hero-sub">
- We are offering slots to pre-doctoral and post-doctoral researchers to give a 5 minute lightning talk at the symposium.
+ We are offering eight slots to pre-doctoral and post-doctoral researchers to give a 5 minute lightning talk at the symposium.
  Selected speakers will be offered a travel award for attendance at the meeting.
     </p>
 
@@ -506,12 +533,19 @@
       </div>
     </div>
 
+    <!-- LEO Foundation credit -->
+    <div class="leo-banner">
+      <span class="leo-banner-text">Travel awards are funded by the LEO Foundation</span>
+      <img src="LEO_LOGO.png" alt="LEO Foundation Logo" />
+    </div>
+
     <p class="hero-note">
-      Deadline: <strong style="color:rgba(255, 255, 255, 0.7)">DD/MM/YY</strong> <br>
+      Deadline: <strong style="color:rgba(255, 255, 255, 0.7)">30/04/26</strong> <br>
        To apply for an award please fill in the form before the deadline.
         We will inform successful travel awardees by end of June, prior to ESDR early registration closure. <br> <br>
         (NB - this is separate from the ESDR main programme abstract submission and you are welcome to submit to both) 
     </p>
+
   </div>
 </section>
 
@@ -526,8 +560,8 @@
       <li>Presenting author must be a pre-doctoral or post-doctoral researcher.</li>
       <li>Abstracts must be submitted in English.</li>
       <li>Abstract: maximum 2,300 characters including spaces.</li>
-      <li>Career stage description: maximum 200? words.</li>
-      <li>Deadline: Date?, 2026.</li>
+      <li>Career stage description: maximum 150 words.</li>
+      <li>Deadline: 30th April 2026.</li>
       <li>Accepted abstracts will be notified by email.</li>
     </ul>
   </div>
@@ -589,14 +623,14 @@
           <div class="field">
             <div class="label-row">
               <label for="ecrText">Career Stage Description</label>
-              <span class="word-count" id="ecrWordCount">0 / 200 words</span>
+              <span class="word-count" id="ecrWordCount">0 / 150 words</span>
             </div>
             <textarea
               id="ecrText"
               name="entry.419200559"
               required
               rows="4"
-              placeholder="Include when you completed / will complete your PhD and a short overview of your career trajectory (~150 words)."
+              placeholder="Include when you completed / will complete your PhD and a short overview of your career trajectory (~100 words)."
             ></textarea>
             <span class="field-error" id="err-ecrText" data-default="Please describe your career stage.">Please describe your career stage.</span>
           </div>
@@ -719,7 +753,7 @@
   }
   abstractTextarea.addEventListener('input', updateCharCount);
 
-  bindWordCount('ecrText', 'ecrWordCount', 200);
+  bindWordCount('ecrText', 'ecrWordCount', 150);
 
   // ── Keywords validation ──────────────────────────────────────
   const keywordsInput = document.getElementById('keywords');
@@ -819,9 +853,9 @@
 
     // Check word limit for ECR field
     const ecrWords = countWords(document.getElementById('ecrText').value);
-    if (ecrWords > 200) {
+    if (ecrWords > 150) {
       showError('ecrText', true);
-      document.getElementById('err-ecrText').textContent = 'Career stage description exceeds 200 words.';
+      document.getElementById('err-ecrText').textContent = 'Career stage description exceeds 150 words.';
       return;
     }
 
