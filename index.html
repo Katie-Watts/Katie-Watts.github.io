@@ -50,7 +50,6 @@
       font-size: 16px;
       line-height: 1.6;
     }
-
     /* ── Nav ─────────────────────────────── */
     nav {
       background: rgba(255,255,255,0.92);
@@ -220,6 +219,22 @@
       transition: background 0.2s;
     }
     .btn-ghost:hover { background: rgba(255,255,255,0.18); }
+
+    .supporter-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.supporter-logos img {
+  height: 64px;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+.supporter-logos img:hover { opacity: 1; }
 
     /* ── Sections ────────────────────────── */
     .section-inner {
@@ -639,8 +654,13 @@
       Skin Genetics Consortium, Human Skin Atlas and Human Cell Atlas. The event will also include selected lightning
       talks from early career researchers, and opportunities for discussion and networking.
       <br> <br>
-      This event is funded by the LEO Foundation and ESDR.
+      This event is supported by the LEO Foundation and ESDR.
     </p>
+    <div class="supporter-logos">
+      <img src="logos/LEO_LOGO2.jpg" alt="LEO Foundation" />
+      <img src="logos/ESDR.png" alt="ESDR" onerror="this.style.display='none'" />
+    </div>
+<br>
     <div class="about-highlight">
       <strong> If you are a pre-doctoral or post-doctoral researcher please consider applying for a travel award</strong>
       (up to £1000 if based in Europe, £2000 International for travel and accommodation, plus free registration
@@ -666,6 +686,12 @@
         <div class="speaker-avatar"><img src="speakers/MS.jpg" alt="Michael Simpson" onerror="this.parentNode.textContent='MS'"></div>
         <div class="speaker-name">Michael Simpson</div>
         <div class="speaker-affil">King's College London</div>
+      </div>
+
+      <div class="speaker-card">
+        <div class="speaker-avatar"><img src="speakers/OS2.jpg"Oliver Stegle" onerror="this.parentNode.textContent='OS'"></div>
+        <div class="speaker-name">Oliver Stegle</div>
+        <div class="speaker-affil">European Molecular Biology Laboratory (EMBL)</div>
       </div>
 
       <div class="speaker-card">
@@ -783,7 +809,7 @@
         <div class="schedule-time">10:10 – 10:40</div>
         <div class="schedule-content">
           <h3>Keynote speaker: Transforming biological inference through data integration </h3>
-          <p>TBC</p>
+          <p>Oliver Stegle</p>
         </div>
       </div>
             <div class="schedule-item">
@@ -927,7 +953,7 @@
 <!-- ── Footer ────────────────────────────────── -->
 <footer>
   <p>ESDR Satellite Event</p>
-  <p>Funded by the LEO Foundation and ESDR</p>
+  <p>Supported by the LEO Foundation and ESDR</p>
   <div>
     <img src="logos/LEO_LOGO.png" alt="LEO Foundation Logo" />
   </div>
